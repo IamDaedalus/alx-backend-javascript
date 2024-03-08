@@ -1,1 +1,1 @@
-export default (initNum, expansion89 = 89, expansion19 = 19) => initNum + expansion89 + expansion19;
+export default (initialNumber, expansion1989 = 89, expansion2019 = 19) => initialNumber + expansion1989 + expansion2019;
