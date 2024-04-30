@@ -1,5 +1,3 @@
-module.exports = myInput
-
 function myInput() {
   process.stdout.write('Welcome to Holberton School, what is your name?\n');
 
@@ -12,3 +10,5 @@ function myInput() {
 }
 
 myInput();
+
+module.exports = myInput

@@ -1,4 +1,3 @@
-module.exports = countStudents
 const fs = require('fs');
 
 function generateStudentList(field, students) {
@@ -40,3 +39,5 @@ function countStudents(path) {
     throw new Error('Cannot load the database');
   }
 }
+
+module.exports = countStudents

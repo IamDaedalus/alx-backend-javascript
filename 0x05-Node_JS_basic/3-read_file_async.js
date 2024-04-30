@@ -1,4 +1,3 @@
-module.exports = countStudents
 const fs = require('fs');
 
 function generateStudentList(field, students) {
@@ -55,3 +54,5 @@ function generateStudentList(field, students) {
   const studentList = students.join(', ');
   return `Number of students in ${field}: ${studentCount}. List: ${studentList}`;
 }
+
+module.exports = countStudents
