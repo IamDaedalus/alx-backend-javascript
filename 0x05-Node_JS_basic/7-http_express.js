@@ -1,8 +1,30 @@
-const { createServer } = require('http');
 const fs = require('fs');
-
-const hostname = '127.0.0.1';
+const express = require('express');
+const app = express();
 const port = 1245;
+
+app.get('/', (req, res) => {
+  res.send('Hello Holberton School');
+});
+
+app.get('/students', (req, res) => {
+  const fileName = process.argv[2];
+  if (!fileName) {
+    res.statusCode = 400;
+    res.end('Error: Database file path is missing');
+    return;
+  }
+
+  countStudents(fileName)
+    .then((data) => {
+      res.statusCode = 200;
+      res.end(`This is the list of our students\n${data}`);
+    })
+    .catch((error) => {
+      res.statusCode = 500;
+      res.end(error.message);
+    });
+});
 
 function countStudents(filePath) {
   return new Promise((resolve, reject) => {
@@ -37,37 +59,6 @@ function countStudents(filePath) {
   });
 }
 
-const app = createServer((req, res) => {
-  res.setHeader('Content-Type', 'text/plain');
+app.listen(port);
 
-  if (req.url === '/') {
-    res.statusCode = 200;
-    res.end('Hello Holberton School!');
-  } else if (req.url === '/students') {
-    const fileName = process.argv[2];
-    if (!fileName) {
-      res.statusCode = 400;
-      res.end('Error: Database file path is missing');
-      return;
-    }
-
-    countStudents(fileName)
-      .then((data) => {
-        res.statusCode = 200;
-        res.end(`This is the list of our students\n${data}`);
-      })
-      .catch((error) => {
-        res.statusCode = 500;
-        res.end(error.message);
-      });
-  } else {
-    res.statusCode = 404;
-    res.end('404 Not Found');
-  }
-});
-
-app.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
-});
-
-module.exports = app;
+module.exports = app
