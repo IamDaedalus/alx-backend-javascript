@@ -15,9 +15,9 @@ function countStudents(filePath) {
         const csList = [];
 
         lines.forEach((line) => {
-          line = line.trim(); // Trim the line
-          if (line.length > 0) {
-            const values = line.split(',');
+          const l = line.trim(); // Trim the line
+          if (l.length > 0) {
+            const values = l.split(',');
             const studentName = values[0];
             const course = values[values.length - 1];
             if (course === 'SWE') {
@@ -36,28 +36,4 @@ function countStudents(filePath) {
   });
 }
 
-function calculateStats(data) {
-  const lines = data.split('\n');
-
-  const sweList = [];
-  const csList = [];
-
-  lines.forEach((line) => {
-    line = line.trim(); // Trim the line
-    if (line.length > 0) {
-      const values = line.split(',');
-      const studentName = values[0];
-      const course = values[values.length - 1];
-      if (course === 'SWE') {
-        sweList.push(studentName);
-      } else if (course === 'CS') {
-        csList.push(studentName);
-      }
-    }
-  });
-
-  console.log(`Number of students in SWE: ${sweList.length}. List: ${sweList.join(', ')}`);
-  console.log(`Number of students in CS: ${csList.length}. List: ${csList.join(', ')}`);
-} 
-
-module.exports = countStudents
+module.exports = countStudents;

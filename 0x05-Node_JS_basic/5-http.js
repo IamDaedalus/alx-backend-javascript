@@ -1,4 +1,5 @@
 const { createServer } = require('http');
+
 const fs = require('fs');
 
 const hostname = '127.0.0.1';
@@ -17,9 +18,9 @@ function countStudents(filePath) {
       const csList = [];
 
       lines.forEach((line) => {
-        line = line.trim(); // Trim the line
-        if (line.length > 0) {
-          const values = line.split(',');
+        const l = line.trim(); // Trim the line
+        if (l.length > 0) {
+          const values = l.split(',');
           const studentName = values[0];
           const course = values[values.length - 1];
           if (course === 'SWE') {
