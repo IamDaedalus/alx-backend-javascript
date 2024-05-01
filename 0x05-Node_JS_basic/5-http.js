@@ -45,11 +45,6 @@ const app = createServer((req, res) => {
     res.end('Hello Holberton School!');
   } else if (req.url === '/students') {
     const fileName = process.argv[2];
-    if (!fileName) {
-      res.statusCode = 400;
-      res.end('Error: Database file path is missing');
-      return;
-    }
 
     countStudents(fileName)
       .then((data) => {

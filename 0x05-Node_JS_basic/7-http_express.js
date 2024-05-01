@@ -9,11 +9,6 @@ app.get('/', (req, res) => {
 
 app.get('/students', (req, res) => {
   const fileName = process.argv[2];
-  if (!fileName) {
-    res.statusCode = 400;
-    res.end('Error: Database file path is missing');
-    return;
-  }
 
   countStudents(fileName)
     .then((data) => {
