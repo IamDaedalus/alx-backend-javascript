@@ -22,6 +22,7 @@ function countStudents(path) {
       }
     });
 
+    console.log(`Number of students: ${sweList.length + csList.length}`);
     console.log(`Number of students in SWE: ${sweList.length}. List: ${sweList.join(', ')}`);
     console.log(`Number of students in CS: ${csList.length}. List: ${csList.join(', ')}`);
   } catch (err) {

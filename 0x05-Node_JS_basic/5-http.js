@@ -31,8 +31,10 @@ function countStudents(filePath) {
         }
       });
 
-      const stats = `Number of students in SWE: ${sweList.length}. List: ${sweList.join(', ')}\n`
-                 + `Number of students in CS: ${csList.length}. List: ${csList.join(', ')}`;
+      const stats = `This is the list of our students
+Number of students: ${sweList.length + csList.length}
+Number of students in CS: ${csList.length}. List: ${csList.join(', ')}
+Number of students in SWE: ${sweList.length}. List: ${sweList.join(', ')}`;
       resolve(stats);
     });
   });
@@ -50,7 +52,7 @@ const app = createServer((req, res) => {
     countStudents(fileName)
       .then((data) => {
         res.statusCode = 200;
-        res.end(`This is the list of our students\n${data}`);
+        res.end(`${data}`);
       })
       .catch((error) => {
         res.statusCode = 500;
